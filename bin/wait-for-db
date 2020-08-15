@@ -1,21 +1,33 @@
 #!/usr/bin/env node
 
-var mysql      = require('pg');
-var envValues  = require('./common/env-values');
+var pg = require("pg");
+
+//var conString = 'postgres://garyd@0.0.0.0:5432/garyd';
+var conString = process.env.DATABASE_URL;
+
+var client = new pg.Client(conString);
+client.connect();
+console.error('constring: ' + conString);
 
 console.error(`Awaiting pg database…`);
 pingDatabaseUntilConnected();
 
 function pingDatabaseUntilConnected() {
-  var connection = pg.createConnection(envValues.mysqlDatabaseUrl);
-  connection.query('SELECT 1', function (error, results, fields) {
-    if (error) {
-      console.error(`Database not yet available: ${error.message}`);
+  client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+    if (err) {
+      console.error(`Database not yet available: ${err}`);
       setTimeout(pingDatabaseUntilConnected, 5000);
     } else {
       console.error('Database connected.');
-      connection.end();
+      //for (let row of res.rows) {
+      //  console.log(JSON.stringify(row));
+      //}
+      //console.error('FReakin Success.');
+      //console.error('Database connected.');
       process.exit(0);
     }
+
   });
+
 }
+
