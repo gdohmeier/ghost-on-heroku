@@ -120,6 +120,7 @@ git push heroku master
 Requires MySQL database, available through either of two add-ons:
   * [JawsDB](https://elements.heroku.com/addons/jawsdb) (deploy default)
   * [ClearDB](https://elements.heroku.com/addons/cleardb)
+  * [Postgress] in prog
 
 Newer versions of Ghost frequently require changes to the database. These changes are automated with a process called **database migrations**.
 
