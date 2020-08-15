@@ -7,6 +7,7 @@
   "database": {
     "client": "sqlite3",
     "connection": {
+      "socketPath": "/var/run/mysqld/mysqld.sock",
       "filename": "content/data/ghost-local.db"
     }
   },
