@@ -65,10 +65,10 @@ function createConfig() {
           port     : '5432',
           user     : 'tkeuzrafbjwbdi',
           password : '601e8610836775d21092ccd5fcab9422071c1a18ff89c6695d2c2f12f89d8d36',
-          database : '601e8610836775d21092ccd5fcab9422071c1a18ff89c6695d2c2f12f89d8d36',
+          database : 'dekiehg6o4nn5u',
           charset  : 'utf8'
       }
-  },   server: {
+    },   server: {
       host: '0.0.0.0',
       port: process.env.PORT
     },
