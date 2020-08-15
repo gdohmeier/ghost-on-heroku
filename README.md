@@ -1,5 +1,7 @@
 # [Ghost](https://github.com/TryGhost/Ghost) on [Heroku](http://heroku.com)
 
+# failed attempt to make this work with postgress . will try more later
+
 Ghost is a free, open, simple blogging platform. Visit the project's website at <http://ghost.org>, or read the docs on <http://support.ghost.org>.
 
 ## Ghost version 2.X
