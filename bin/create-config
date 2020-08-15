@@ -59,12 +59,16 @@ function createConfig() {
     fileStorage: fileStorage,
     storage: storage,
     database: {
-      client: 'mysql',
-      connection: getMysqlConfig(envValues.mysqlDatabaseUrl),
-      pool: { min: 0, max: 5 },
-      debug: false
-    },
-    server: {
+      client: 'pg',
+      connection: {
+          host     : 'ec2-3-208-50-226.compute-1.amazonaws.com',
+          port     : '5432',
+          user     : 'tkeuzrafbjwbdi',
+          password : '601e8610836775d21092ccd5fcab9422071c1a18ff89c6695d2c2f12f89d8d36',
+          database : '601e8610836775d21092ccd5fcab9422071c1a18ff89c6695d2c2f12f89d8d36',
+          charset  : 'utf8'
+      }
+  },   server: {
       host: '0.0.0.0',
       port: process.env.PORT
     },
@@ -75,11 +79,6 @@ function createConfig() {
 
   return config;
 }
-
-function getMysqlConfig(connectionUrl) {
-  if (connectionUrl == null) {
-    return {};
-  }
 
   var dbConfig = url.parse(connectionUrl);
   if (dbConfig == null) {
@@ -98,7 +97,7 @@ function getMysqlConfig(connectionUrl) {
 
   var dbConnection = {
     host: dbConfig.hostname,
-    port: dbConfig.port || '3306',
+    port: dbConfig.port || '5432',
     user: dbUser,
     password: dbPassword,
     database: dbName
@@ -108,3 +107,4 @@ function getMysqlConfig(connectionUrl) {
 
 var configContents = JSON.stringify(createConfig(), null, 2);
 fs.writeFileSync(path.join(appRoot, 'config.production.json'), configContents);
+

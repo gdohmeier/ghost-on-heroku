@@ -5,9 +5,8 @@
     "host": "127.0.0.1"
   },
   "database": {
-    "client": "sqlite3",
+    "client": "pg",
     "connection": {
-      "socketPath": "/var/run/mysqld/mysqld.sock",
       "filename": "content/data/ghost-local.db"
     }
   },
